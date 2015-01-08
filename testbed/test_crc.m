@@ -6,22 +6,26 @@ clc
 %% Test 1 - Small example packet
 fprintf('\nTest 1:  Simple 8-byte packet\n')
 
-% checksum16 = '3c9d';            % valid CRC16 checksum
-% checksum16 = uint8(hex2dec(reshape(checksum16,2,[]).'));
-checksum32 = '9ae0daaf';        % valid CRC32 checksum
-checksum32 = uint8(hex2dec(reshape(checksum32,2,[]).'));
-
+% create test data
 data = 48 + uint8(1:8)';    % ascii numbers 1-8
 fprintf('Data:\n')
 fprintf('         %.2X %.2X %.2X %.2X %.2X %.2X %.2X %.2X\n',data);
 fprintf('\n')
 
-% % calculate CRC-16 checksum
-% crc = crc16(data);
-% fprintf('CRC-16:   %.4X\n',crc)
-% fprintf('Expected: %s\n',upper(reshape(dec2hex(checksum16).',1,[])))
+% calculate CRC-16 checksum
+checksum16 = '3c9d';            % valid CRC16 checksum
+checksum16 = uint8(hex2dec(reshape(checksum16,2,[]).'));
+
+%crc = crc16(data);
+crctable16 = calc_crctable('1021');
+crc = calc_crc(data,crctable16);
+fprintf('CRC-16:   %.4X\n',crc)
+fprintf('Expected: %s\n',upper(reshape(dec2hex(checksum16).',1,[])))
 
 % calculate CRC-32 checksum
+checksum32 = '9ae0daaf';        % valid CRC32 checksum
+checksum32 = uint8(hex2dec(reshape(checksum32,2,[]).'));
+
 crc = crc32(data);
 fprintf('CRC-32:   %.8X\n',crc)
 fprintf('Expected: %s\n',upper(reshape(dec2hex(checksum32).',1,[])))
