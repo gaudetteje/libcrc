@@ -11,12 +11,6 @@ function crctable = calc_crctable(poly)
 %
 % See also crc16 crc32 calc_crc
 
-% Author:   Jason Gaudette
-% Company:  Naval Undersea Warfare Center (Newport, RI)
-% Phone:    401.832.6601
-% Email:    jason.e.gaudette@navy.mil
-% Date:     20110125
-
 % check data type of POLY
 assert(isnumeric(poly) || ischar(poly),'POLY must be either a hexadecimal string or numeric data type!');
 

@@ -15,13 +15,6 @@ function crc = calc_crc(data,poly,varargin)
 %
 % See also crc16 crc32 calc_crctable
 
-% Author:   Jason Gaudette
-% Company:  Naval Undersea Warfare Center (Newport, RI)
-% Phone:    401.832.6601
-% Email:    jason.e.gaudette@navy.mil
-% Date:     20110125
-
-% validate input polynomial/lookup table
 if ischar(poly) || isscalar(poly)
     % convert to uint if necessary
     if ischar(poly)

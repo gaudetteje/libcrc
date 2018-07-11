@@ -10,12 +10,6 @@ function crc=crc32(data)
 %
 % See also crc16 calc_crc calc_crctable
 
-% Author:   Jason Gaudette
-% Company:  Naval Undersea Warfare Center (Newport, RI)
-% Phone:    401.832.6601
-% Email:    jason.e.gaudette@navy.mil
-% Date:     20110125
-
 % define 32-bit generator polynomial code (CRC-32-IEEE)
 %crctable = calc_crctable('04C11DB7');
 crctable = uint32([ ...
